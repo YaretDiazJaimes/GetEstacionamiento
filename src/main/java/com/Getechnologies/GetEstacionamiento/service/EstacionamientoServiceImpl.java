@@ -19,7 +19,9 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
 
     @Autowired
     private EstanciaRepository estanciaRepository;
+    @Autowired
     private VehiculoRepository vehiculoRepository;
+    @Autowired
     private ResidenteRepository residenteRepository;
 
     private static final double TARIFA_RESIDENTES = 0.05; // MXN por minuto

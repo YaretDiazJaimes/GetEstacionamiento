@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EstanciaRepository extends JpaRepository<Estancia, Long> {
-
-
     Estancia findByNumeroPlacaAndHoraSalidaIsNull(String numeroPlaca);
 
     Estancia findByNumeroPlacaAndHoraSalidaIsNotNull(String numeroPlaca);
