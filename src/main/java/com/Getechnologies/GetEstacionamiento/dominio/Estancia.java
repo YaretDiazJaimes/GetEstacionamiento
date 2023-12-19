@@ -74,6 +74,32 @@ public class Estancia {
     }
 
     private String residenteNumeroPlaca;
+
+    public boolean isCocheOficial() {
+        return cocheOficial;
+    }
+
+    public void setCocheOficial(boolean cocheOficial) {
+        this.cocheOficial = cocheOficial;
+    }
+
+    private boolean cocheOficial;
+
+    public void getPlaca() {
+        return;
+    }
+
+    public boolean isResidenteVerdad() {
+        return residenteVerdad;
+    }
+
+    public void setResidenteVerdad(boolean residenteVerdad) {
+        this.residenteVerdad = residenteVerdad;
+    }
+
+    @Column(name = "residente_verdad")
+    private boolean residenteVerdad;
+
 }
 
 

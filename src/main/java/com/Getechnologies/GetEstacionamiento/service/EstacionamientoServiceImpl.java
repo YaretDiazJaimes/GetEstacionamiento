@@ -114,7 +114,7 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
 
     }
 
-    private boolean esResidente(String numeroPlaca) {
+    public boolean esResidente(String numeroPlaca) {
         List<Residente> residentes = residenteRepository.findAll();
         return residentes.stream().anyMatch(residente -> residente.getNumeroPlaca().equalsIgnoreCase(numeroPlaca));
     }
@@ -135,6 +135,19 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
             throw new RuntimeException("No se encontró una estancia activa para la placa " + numeroPlaca);
         }
     }
+    public void comenzarNuevoMes() {
+        eliminarEstanciasCochesOficiales();
+        reiniciarTiempoEstacionadoResidentes();
+    }
 
 
+    public void eliminarEstanciasCochesOficiales() {
+        estanciaRepository.deleteByCocheOficial(true);
+    }
+
+    public void reiniciarTiempoEstacionadoResidentes() {
+        estanciaRepository.reiniciarTiempoEstacionadoResidentes();
+    }
 }
+
+
