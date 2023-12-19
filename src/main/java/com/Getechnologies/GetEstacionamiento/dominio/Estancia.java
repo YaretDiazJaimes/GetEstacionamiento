@@ -68,6 +68,12 @@ public class Estancia {
     public double calcularTiempoEstacionado() {
         return 0;
     }
+
+    public String getResidenteNumeroPlaca() {
+        return residenteNumeroPlaca;
+    }
+
+    private String residenteNumeroPlaca;
 }
 
 

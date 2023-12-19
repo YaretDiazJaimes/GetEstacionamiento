@@ -24,20 +24,34 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
     @Autowired
     private ResidenteRepository residenteRepository;
 
-    private static final double TARIFA_RESIDENTES = 0.05; // MXN por minuto
-    private static final double TARIFA_NO_RESIDENTES = 0.5; // MXN por minuto
+    private static final double TARIFA_RESIDENTES = 0.05;
+    private static final double TARIFA_NO_RESIDENTES = 0.5;
 
     @Override
     public void registrarEntrada(String numeroPlaca) {
 
-        LocalDateTime horaEntrada = LocalDateTime.now();
 
 
-        Estancia estancia = new Estancia();
-        estancia.setNumeroPlaca(numeroPlaca);
-        estancia.setHoraEntrada(horaEntrada);
+        if (esOficial(numeroPlaca)) {
+            registrarVehiculoOficial(numeroPlaca);
+        }
 
-        estanciaRepository.save(estancia);
+        if (esResidente(numeroPlaca)) {
+            registrarResidente(numeroPlaca);
+        }
+    }
+
+
+    private void registrarVehiculoOficial(String numeroPlaca) {
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setNumeroPlaca(numeroPlaca);
+        vehiculo.setTipoVehiculo("oficial");
+        vehiculoRepository.save(vehiculo);
+    }
+
+    private void registrarResidente(String numeroPlaca) {
+        Residente residente = new Residente();
+        residenteRepository.save(residente);
     }
 
     @Override
@@ -121,4 +135,6 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
             throw new RuntimeException("No se encontró una estancia activa para la placa " + numeroPlaca);
         }
     }
+
+
 }

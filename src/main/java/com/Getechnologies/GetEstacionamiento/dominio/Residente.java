@@ -19,5 +19,17 @@ public class Residente {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Residente getResidente() {
+        return residente;
+    }
+
+    public void setResidente(Residente residente) {
+        this.residente = residente;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "residente_id")
+    private Residente residente;
 }
 
