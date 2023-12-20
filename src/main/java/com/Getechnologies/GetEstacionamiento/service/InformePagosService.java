@@ -27,7 +27,7 @@ public class InformePagosService {
 
     public void generarInforme(String nombreArchivo) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo))) {
-            List<Estancia> estancias = estanciaRepository.findAll(); // Obtener todas las estancias
+            List<Estancia> estancias = estanciaRepository.findAll();
 
             for (Estancia estancia : estancias) {
                 long tiempoEstacionado = calcularTiempoEstacionado(estancia);
@@ -57,7 +57,7 @@ public class InformePagosService {
     }
 
     private long calcularTiempoEstacionado(Estancia estancia) {
-        return estancia.getTiempoEstacionado(); // Puedes ajustar esto según la estructura real de tu Estancia
+        return estancia.getTiempoEstacionado();
     }
 
     private boolean esOficial(String numeroPlaca) {

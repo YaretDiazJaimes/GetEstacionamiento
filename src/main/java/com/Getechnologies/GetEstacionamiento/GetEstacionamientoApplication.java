@@ -43,7 +43,7 @@ public class GetEstacionamientoApplication implements CommandLineRunner {
 			System.out.print("Seleccione una opción: ");
 
 			int opcion = scanner.nextInt();
-			scanner.nextLine(); // Consumir la nueva línea después de nextInt
+			scanner.nextLine();
 
 			switch (opcion) {
 				case 1:
