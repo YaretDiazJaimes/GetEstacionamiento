@@ -98,7 +98,9 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
     @Override
     @Transactional
     public void darAltaVehiculoResidente(String placaResidente) {
-
+        Residente residente = new Residente();
+        residente.setNumeroPlaca(placaResidente);
+        residenteRepository.save(residente);
     }
 
     private Estancia obtenerEstancia(String numeroPlaca) {
