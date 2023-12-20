@@ -14,6 +14,8 @@ public interface EstacionamientoService {
     void comenzarNuevoMes();
 
     void registrarVehiculoOficial(String numeroPlaca);
+
+    boolean esResidente(String numeroPlaca);
 }
 
 
