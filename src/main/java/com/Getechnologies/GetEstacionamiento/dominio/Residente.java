@@ -1,17 +1,20 @@
 package com.Getechnologies.GetEstacionamiento.dominio;
 
-
 import jakarta.persistence.*;
 
 @Entity
 public class Residente {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public String getNumeroPlaca() {
-        return null;
-    }
+    @ManyToOne
+    @JoinColumn(name = "residente_id")
+    private Residente residente;
+
+
+
     public Long getId() {
         return id;
     }
@@ -28,8 +31,7 @@ public class Residente {
         this.residente = residente;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "residente_id")
-    private Residente residente;
+    public String getNumeroPlaca() {
+        return null;
+    }
 }
-

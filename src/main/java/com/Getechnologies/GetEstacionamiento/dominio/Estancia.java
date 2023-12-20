@@ -1,12 +1,9 @@
 package com.Getechnologies.GetEstacionamiento.dominio;
 
-
 import jakarta.persistence.*;
 import org.hibernate.annotations.Formula;
 
-
 import java.time.LocalDateTime;
-
 
 @Entity
 @Table(name = "estancias")
@@ -16,6 +13,38 @@ public class Estancia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "numero_placa")
+    private String numeroPlaca;
+
+    @Column(name = "hora_entrada")
+    private LocalDateTime horaEntrada;
+
+    @Column(name = "hora_salida")
+    private LocalDateTime horaSalida;
+
+    @Formula("(CASE WHEN hora_salida IS NOT NULL THEN TIMESTAMPDIFF(MINUTE, hora_entrada, hora_salida) ELSE 0 END)")
+    private long tiempoEstacionado;
+
+    @Column(name = "residente_verdad")
+    private boolean residenteVerdad;
+
+    private String residenteNumeroPlaca;
+
+    private boolean cocheOficial;
+
+    private LocalDateTime entrada;
+
+    public Estancia() {
+
+    }
+
+    public Estancia(String numeroPlaca, LocalDateTime horaEntrada) {
+        this.numeroPlaca = numeroPlaca;
+        this.horaEntrada = horaEntrada;
+    }
+
+
+
     public String getNumeroPlaca() {
         return numeroPlaca;
     }
@@ -23,9 +52,6 @@ public class Estancia {
     public void setNumeroPlaca(String numeroPlaca) {
         this.numeroPlaca = numeroPlaca;
     }
-
-    @Column(name = "numero_placa")
-    private String numeroPlaca;
 
     public LocalDateTime getHoraEntrada() {
         return horaEntrada;
@@ -35,14 +61,6 @@ public class Estancia {
         this.horaEntrada = horaEntrada;
     }
 
-    @Column(name = "hora_entrada")
-    private LocalDateTime horaEntrada;
-    public void setEntrada(LocalDateTime entrada) {
-        this.entrada = entrada;
-    }
-
-    private LocalDateTime entrada;
-
     public LocalDateTime getSalida() {
         return horaSalida;
     }
@@ -50,8 +68,6 @@ public class Estancia {
     public void setSalida(LocalDateTime salida) {
         this.horaSalida = salida;
     }
-
-    private LocalDateTime horaSalida;
 
     public long getTiempoEstacionado() {
         return tiempoEstacionado;
@@ -61,10 +77,6 @@ public class Estancia {
         this.tiempoEstacionado = tiempoEstacionado;
     }
 
-    @Formula("(CASE WHEN hora_salida IS NOT NULL THEN TIMESTAMPDIFF(MINUTE, hora_entrada, hora_salida) ELSE 0 END)")
-    private long tiempoEstacionado;
-
-
     public double calcularTiempoEstacionado() {
         return 0;
     }
@@ -72,8 +84,6 @@ public class Estancia {
     public String getResidenteNumeroPlaca() {
         return residenteNumeroPlaca;
     }
-
-    private String residenteNumeroPlaca;
 
     public boolean isCocheOficial() {
         return cocheOficial;
@@ -83,10 +93,8 @@ public class Estancia {
         this.cocheOficial = cocheOficial;
     }
 
-    private boolean cocheOficial;
-
     public void getPlaca() {
-        return;
+
     }
 
     public boolean isResidenteVerdad() {
@@ -96,11 +104,4 @@ public class Estancia {
     public void setResidenteVerdad(boolean residenteVerdad) {
         this.residenteVerdad = residenteVerdad;
     }
-
-    @Column(name = "residente_verdad")
-    private boolean residenteVerdad;
-
 }
-
-
-

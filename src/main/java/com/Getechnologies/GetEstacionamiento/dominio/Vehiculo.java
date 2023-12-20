@@ -1,10 +1,16 @@
 package com.Getechnologies.GetEstacionamiento.dominio;
 
-
 import jakarta.persistence.*;
 
 @Entity
 public class Vehiculo {
+
+    @Id
+    private String numeroPlaca;
+
+    private String tipoVehiculo;
+
+
     public String getNumeroPlaca() {
         return numeroPlaca;
     }
@@ -13,9 +19,6 @@ public class Vehiculo {
         this.numeroPlaca = numeroPlaca;
     }
 
-    @Id
-    private String numeroPlaca;
-
     public String getTipoVehiculo() {
         return tipoVehiculo;
     }
@@ -23,7 +26,4 @@ public class Vehiculo {
     public void setTipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
     }
-
-    private String tipoVehiculo;
-
 }
