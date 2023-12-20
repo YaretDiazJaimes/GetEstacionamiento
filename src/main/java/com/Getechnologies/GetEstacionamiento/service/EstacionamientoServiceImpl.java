@@ -53,8 +53,10 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
 
     private void registrarResidente(String numeroPlaca) {
         Residente residente = new Residente();
+        residente.setNumeroPlaca(numeroPlaca);
         residenteRepository.save(residente);
     }
+
 
     @Override
     @Transactional

@@ -34,4 +34,7 @@ public class Residente {
     public String getNumeroPlaca() {
         return null;
     }
+
+    public void setNumeroPlaca(String numeroPlaca) {
+    }
 }
