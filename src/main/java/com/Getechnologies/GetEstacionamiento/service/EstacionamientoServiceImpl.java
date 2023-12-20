@@ -61,10 +61,10 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
     @Override
     @Transactional
     public void registrarSalida(String numeroPlaca) {
-        LocalDateTime horaSalida = LocalDateTime.now();
         Estancia estancia = estanciaRepository.findByNumeroPlacaAndHoraSalidaIsNull(numeroPlaca);
 
         if (estancia != null) {
+            LocalDateTime horaSalida = LocalDateTime.now();
             estancia.setSalida(horaSalida);
             Duration tiempoEstacionado = Duration.between(estancia.getHoraEntrada(), horaSalida);
             estancia.setTiempoEstacionado(tiempoEstacionado.toMinutes());
