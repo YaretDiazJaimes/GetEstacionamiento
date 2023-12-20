@@ -1,6 +1,6 @@
 package com.Getechnologies.GetEstacionamiento.service;
 
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 public interface EstacionamientoService {
     void registrarEntrada(String numeroPlaca);
@@ -9,9 +9,12 @@ public interface EstacionamientoService {
 
     double calcularImporte(String numeroPlaca);
 
+    void darAltaVehiculoResidente(String placaResidente);
 
+    void comenzarNuevoMes();
 
-    }
+    void registrarVehiculoOficial(String numeroPlaca);
+}
 
 
 

@@ -41,8 +41,8 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
         }
     }
 
-
-    private void registrarVehiculoOficial(String numeroPlaca) {
+    @Override
+    public void registrarVehiculoOficial(String numeroPlaca) {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setNumeroPlaca(numeroPlaca);
         vehiculo.setTipoVehiculo("oficial");
@@ -100,6 +100,11 @@ public class EstacionamientoServiceImpl implements EstacionamientoService {
 
             throw new RuntimeException("No se encontró una estancia para la placa " + numeroPlaca);
         }
+    }
+
+    @Override
+    public void darAltaVehiculoResidente(String placaResidente) {
+
     }
 
 
