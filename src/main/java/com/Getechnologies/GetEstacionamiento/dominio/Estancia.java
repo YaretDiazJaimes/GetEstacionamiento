@@ -2,8 +2,10 @@ package com.Getechnologies.GetEstacionamiento.dominio;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Formula;
-
+import java.time.Duration;
 import java.time.LocalDateTime;
+
+
 
 @Entity
 @Table(name = "estancias")
@@ -78,7 +80,12 @@ public class Estancia {
     }
 
     public double calcularTiempoEstacionado() {
-        return 0;
+        if (horaEntrada != null && horaSalida != null) {
+            Duration duracionEstacionado = Duration.between(horaEntrada, horaSalida);
+            return duracionEstacionado.toMinutes();
+        } else {
+            throw new IllegalStateException("No hay información para calcular el tiempo estacionado.");
+        }
     }
 
     public String getResidenteNumeroPlaca() {
